@@ -31,20 +31,23 @@ public class PrCarDataIn0101Collector {
             while((line= br.readLine()) != null){
                 String[] info_arry = line.split(";");
                 String dateStr = info_arry[6];
-                String fileName = toFileName(dateStr);
+                String fileName = toFileName(dateStr) + ".txt";
 
-                if(!bw_map.containsKey("fileName")){
-                    File newFile = new File("data\\"+fileName);
-                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newFile)));
+                BufferedWriter bw = null;
+                if(!bw_map.containsKey(fileName)){
+                    File newFile = new File("KKData\\data\\"+fileName);
+                    if (!newFile.exists()) newFile.createNewFile();
+                    bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newFile)));
                     bw_map.put(fileName, bw);
-                    bw.append(line+"\n");
-                    bw.flush();
                 }
                 else{
-                    BufferedWriter bw = bw_map.get(fileName);
+                    bw = bw_map.get(fileName);
                     bw.append(line+"\n");
                     bw.flush();
                 }
+
+                bw.append(line+"\n");
+                bw.flush();
             }
             br.close();
             closeBw_map(bw_map);
