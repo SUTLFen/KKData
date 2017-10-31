@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 /**
  * Created by Fairy_LFen on 2017/1/8.
@@ -6,13 +6,37 @@ package Util;
  * 每辆车经过的卡口点（时间、地点（卡口id））
  *
  */
-public class StayPoint {
+public class
+StayPoint {
     private String kkid = null;
     private String time = null;
+    private String direction = null;
+    private String speed = null;
 
-    public StayPoint(String stayPointDate, String kkid) {
-        this.kkid = kkid;
-        this.time = stayPointDate;
+    public StayPoint() {
+    }
+
+    public StayPoint(StayPointInfo stayPointInfo) {
+        this.kkid = stayPointInfo.getKkid();
+        this.time = stayPointInfo.getStayPointDate();
+        this.direction = stayPointInfo.getDirection();
+        this.speed = stayPointInfo.getSpeed();
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
+    public String getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(String speed) {
+        this.speed = speed;
     }
 
     public String getKkid() {

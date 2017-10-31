@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +12,16 @@ import java.util.List;
 public class IndivisualPrCarInfo {
     private String plateNumber = null;
     private List<StayPoint> stayPoints = new ArrayList<StayPoint>();
-    private String speed = null;
-    private String kkid = null;
-    private String direction = null;
+
+    public IndivisualPrCarInfo() {
+    }
 
     public IndivisualPrCarInfo(StayPointInfo stayPointInfo) {
         this.plateNumber = stayPointInfo.getPlateNumber();
-        this.speed = stayPointInfo.getSpeed();
-        this.kkid = stayPointInfo.getKkid();
-        this.direction = stayPointInfo.getDirection();
 
-        StayPoint staypoint = new StayPoint(stayPointInfo.getStayPointDate(), stayPointInfo.getKkid());
-        this.stayPoints.add(staypoint);
+        StayPoint stayPoint = new StayPoint(stayPointInfo);
+        this.stayPoints.add(stayPoint);
+
     }
 
     public void addStayPoint(StayPoint stayPoint){
@@ -44,29 +42,5 @@ public class IndivisualPrCarInfo {
 
     public void setStayPoints(List<StayPoint> stayPoints) {
         this.stayPoints = stayPoints;
-    }
-
-    public String getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(String speed) {
-        this.speed = speed;
-    }
-
-    public String getKkid() {
-        return kkid;
-    }
-
-    public void setKkid(String kkid) {
-        this.kkid = kkid;
-    }
-
-    public String getDirection() {
-        return direction;
-    }
-
-    public void setDirection(String direction) {
-        this.direction = direction;
     }
 }
